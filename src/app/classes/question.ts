@@ -27,6 +27,10 @@ export class Question {
     this.category = category;
   }
 
+  getPossibleAnswers():string[]{
+    return [this.answer1,this.answer2];
+  }
+
 }
 
 export enum Categories { kids='kids', couples='couple', normal='normal', savage='savage' }

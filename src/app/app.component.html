@@ -54,9 +54,9 @@
 <div class="container-fluid">
 <game-setup></game-setup>
 
-<game-play *ngIf="questionsService.game && !questionsService.game.isOver()"></game-play>
+<game-play *ngIf="questionGameInstanceService.game && !questionGameInstanceService.game.isOver()"></game-play>
 <!-- <game-results ></game-results> -->
-<game-results *ngIf="questionsService.game && questionsService.game.isOver()"></game-results>
+<game-results *ngIf="questionGameInstanceService.game && questionGameInstanceService.game.isOver()"></game-results>
 
 <app-messages></app-messages>
 

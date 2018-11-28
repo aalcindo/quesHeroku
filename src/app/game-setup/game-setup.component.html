@@ -8,14 +8,15 @@
 <form [formGroup]="setUpForm" (ngSubmit)="startGame()">
   <mat-card>
     <mat-card-header>
-        <mat-card-title>Players ({{setUpForm.get('players').length}})</mat-card-title>
+      
+        <mat-card-title>Players ({{playersFormArray.length}})</mat-card-title>
     </mat-card-header>
     <mat-card-content>
 
       
       <div class="player-container" formArrayName="players">
         <div>
-        <div *ngFor="let player of setUpForm.get('players').controls; let i=index ">
+        <div *ngFor="let player of playersFormArray.controls; let i=index ">
               <mat-card>
               <mat-card-content> 
               <div class="player" [formGroupName]="i">
@@ -57,7 +58,7 @@
         </div>
         <div class="row">
         <div class="col-12 alignCenter" style="background-color:pink1;">
-          <button mat-fab type="button" [disabled]="MAXNUMOFPLAYERS<=setUpForm.get('players').length" (click)="addPlayer()" >
+          <button mat-fab type="button" [disabled]="settings.MAXNUMOFPLAYERS<=playersFormArray.length" (click)="addPlayer()" >
             <mat-icon>add</mat-icon>
           </button>
         </div>

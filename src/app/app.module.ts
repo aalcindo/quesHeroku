@@ -25,6 +25,7 @@ import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { QuestionsGameComponent } from './game-setup/game-setup.component';
 import { QuestionsService } from './services/questions.service';
+import { QuestionGameInstanceService } from './services/question-game-instance.service';
 import { MessagesComponent } from './messages/messages.component';
 import { MessagesService } from './services/messages.service';
 import { GamePlayComponent } from './game-play/game-play.component';
@@ -47,6 +48,6 @@ import { GameResultsComponent } from './game-results/game-results.component';
     ],
   declarations: [ AppComponent, HelloComponent, QuestionsGameComponent, MessagesComponent, GamePlayComponent, GameResultsComponent ],
   bootstrap:    [ AppComponent ],
-  providers: [QuestionsService, MessagesService]
+  providers: [QuestionGameInstanceService,QuestionsService, MessagesService]
 })
 export class AppModule { }

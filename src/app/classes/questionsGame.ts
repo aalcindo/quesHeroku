@@ -3,8 +3,8 @@ import { Categories, Question } from './question';
 import { Color } from './color';
 import { GameRound, Guess } from './gameRound';
 
-import { QuestionsService } from '../services/questions.service';
-
+//import { QuestionsService } from '../services/questions.service';
+import { QuestionGameInstanceService } from '../services/question-game-instance.service';
 export class QuestionsGame {
   questions: Question[];
   players: Player[];
@@ -14,7 +14,7 @@ export class QuestionsGame {
   nextQuestionIndex: number;
 
 
-  constructor(players: Player[], categories: Categories[], numOfQuestions: number, private questionsService: QuestionsService,questions: Question[]) {
+  constructor(players: Player[], categories: Categories[], numOfQuestions: number, private questionGameInstanceService: QuestionGameInstanceService,questions: Question[]) {
     this.players = players;
     let questionsFromServer: Question[];
     //questionsService.getQuestionsByCategory(numOfQuestions, categories).subscribe(questions => {console.log("qqq",questions);questionsFromServer = questions});
@@ -52,8 +52,8 @@ export class QuestionsGame {
 
       }
 
-      if(currRound.isOver() && !this.questionsService.game.isOver()){
-        this.questionsService.game.addGameRound();
+      if(currRound.isOver() && !this.questionGameInstanceService.game.isOver()){
+        this.questionGameInstanceService.game.addGameRound();
       }
     }
   }
@@ -117,7 +117,7 @@ export class QuestionsGame {
 
 }
 
-export { Player, Color, Categories, Question, GameRound, Guess, QuestionsService }
+export { Player, Color, Categories, Question, GameRound, Guess, QuestionGameInstanceService }
 
   // players:Player[];
   // categories:Categories[];

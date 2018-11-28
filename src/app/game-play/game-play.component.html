@@ -19,31 +19,31 @@
     border-style: solid; -->
 
 
-<mat-card [ngStyle]="{'border-color':questionsService.game.getCurrentRound().getCurrentPlayer().color.value, 'border-style': 'solid'}">
+<mat-card [ngStyle]="{'border-color':questionGameInstanceService.game.getCurrentRound().getCurrentPlayer().color.value, 'border-style': 'solid'}">
   <mat-card-content>
-    <p><b>Question ({{questionsService.game.nextQuestionIndex}}) of ({{questionsService.game.questions.length}})</b></p>
+    <p><b>Question ({{questionGameInstanceService.game.nextQuestionIndex}}) of ({{questionGameInstanceService.game.questions.length}})</b></p>
   </mat-card-content>
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>It's <b [ngStyle]="{'color':questionsService.game.getCurrentRound().getCurrentPlayer().color.value}">
-                            {{questionsService.game.getCurrentRound().getCurrentPlayer().name}}
+    <mat-card-title>It's <b [ngStyle]="{'color':questionGameInstanceService.game.getCurrentRound().getCurrentPlayer().color.value}">
+                            {{questionGameInstanceService.game.getCurrentRound().getCurrentPlayer().name}}
                           </b> turn.</mat-card-title>
     <mat-card-subtitle>
 
-            <span *ngIf="questionsService.game.getCurrentRound().getCurrentPlayer()==questionsService.game.getCurrentRound().getGod(); else notGodBlock" class="godCardSubtitle">Set The Correct Answer</span>
-      <ng-template #notGodBlock>what do you think {{questionsService.game.getCurrentRound().getGod().name}} answered:</ng-template>
+            <span *ngIf="questionGameInstanceService.game.getCurrentRound().getCurrentPlayer()==questionGameInstanceService.game.getCurrentRound().getGod(); else notGodBlock" class="godCardSubtitle">Set The Correct Answer</span>
+      <ng-template #notGodBlock>what do you think {{questionGameInstanceService.game.getCurrentRound().getGod().name}} answered:</ng-template>
     </mat-card-subtitle>
   </mat-card-header>
 
   <mat-card-content>
     <p>Would you rather  
-      <button mat-button (click)="guess(questionsService.game.getCurrentRound().question.answer1)"><b>{{questionsService.game.getCurrentRound().question.answer1}}</b></button> 
+      <button mat-button (click)="guess(questionGameInstanceService.game.getCurrentRound().question.answer1)"><b>{{questionGameInstanceService.game.getCurrentRound().question.answer1}}</b></button> 
       or  
-      <button mat-button (click)="guess(questionsService.game.getCurrentRound().question.answer2)"><b>{{questionsService.game.getCurrentRound().question.answer2}}</b></button></p>
+      <button mat-button (click)="guess(questionGameInstanceService.game.getCurrentRound().question.answer2)"><b>{{questionGameInstanceService.game.getCurrentRound().question.answer2}}</b></button></p>
   </mat-card-content>
   
   <mat-card-actions>
-    <button mat-button *ngFor="let answer of questionsService.game.getCurrentRound().question.possibleAnswers; let i=index" (click)="guess(answer)">
+    <button mat-button *ngFor="let answer of questionGameInstanceService.game.getCurrentRound().question.getPossibleAnswers(); let i=index" (click)="guess(answer)">
       {{answer.body}}
     </button>
   </mat-card-actions>

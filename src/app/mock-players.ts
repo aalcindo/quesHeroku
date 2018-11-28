@@ -1,7 +1,7 @@
-import {Player} from 'player';
+import {Player} from './classes/player';
 export const mockPlayers:Player[]=
 [
-  {
+  /*{
     id: "1",
     name: "name1",
     color: {
@@ -45,6 +45,6 @@ export const mockPlayers:Player[]=
       value: "#1565c0"
     },
     score: 1
-  }
+  }*/
   
 ]

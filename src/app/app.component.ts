@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {QuestionsService} from './services/questions.service';
+import { QuestionGameInstanceService } from './services/question-game-instance.service';
 
 @Component({
   selector: 'my-app',
@@ -9,5 +9,5 @@ import {QuestionsService} from './services/questions.service';
 export class AppComponent  {
   name = 'Angular';
 
-  constructor(public questionsService: QuestionsService){}
+  constructor(public questionGameInstanceService: QuestionGameInstanceService){}
 }

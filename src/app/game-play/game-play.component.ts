@@ -3,7 +3,8 @@ import {QuestionsService} from '../services/questions.service';
 import { Question,Categories } from '../classes/question';
 import {Player} from '../classes/player';
 import {FormControl } from '@angular/forms';
-import {Answer,GameRound,Guess} from '../classes/questionsGame';
+// import {GameRound,Guess} from '../classes/questionsGame';
+import { QuestionGameInstanceService } from '../services/question-game-instance.service';
 
 
 @Component({
@@ -14,17 +15,17 @@ import {Answer,GameRound,Guess} from '../classes/questionsGame';
 export class GamePlayComponent implements OnInit {
 
 
-  constructor(public questionsService: QuestionsService) { }
+  constructor(public questionGameInstanceService: QuestionGameInstanceService) { }
 
   ngOnInit() {
   }
 
 
 
-  guess(answer:Answer){
+  guess(answer:string){
     
-    this.questionsService.game.playTurn(answer);
-    if(this.questionsService.game.isOver()){
+    this.questionGameInstanceService.game.playTurn(answer);
+    if(this.questionGameInstanceService.game.isOver()){
       console.log("Game Over");
     }
   }

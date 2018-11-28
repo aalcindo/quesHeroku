@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import {QuestionsService,GameRound,Guess,Question,Categories,Player} from '../classes/questionsGame';
-
+import {GameRound,Guess,Question,Categories,Player} from '../classes/questionsGame';
+import { QuestionGameInstanceService } from '../services/question-game-instance.service';
 import {mockPlayers} from '../mock-players';
 import {mockRounds} from '../mock-rounds';
 
@@ -21,9 +21,9 @@ export class GameResultsComponent implements OnInit {
   gameWinnerString = '';
   opponentGuessesFiltered:Guess[];
 
-  constructor(public questionsService: QuestionsService) {
-    this.players=this.questionsService.game.players;
-    this.rounds=this.questionsService.game.gameRounds;
+  constructor(public questionGameInstanceService: QuestionGameInstanceService) {
+    this.players=this.questionGameInstanceService.game.players;
+    this.rounds=this.questionGameInstanceService.game.gameRounds;
    }
 
   ngOnInit() {
@@ -60,7 +60,7 @@ export class GameResultsComponent implements OnInit {
 
    getRoundsGuessed(playerId:String):GameRound[]{
      //console.log(playerId,this.questionsService.game.gameRounds);
-     return this.questionsService.game.gameRounds.filter(gr=>{return gr.opponentGuesses.filter(guess=>{return guess.player.id==playerId})[0]});
+     return this.questionGameInstanceService.game.gameRounds.filter(gr=>{return gr.opponentGuesses.filter(guess=>{return guess.player.id==playerId})[0]});
    }
 
 

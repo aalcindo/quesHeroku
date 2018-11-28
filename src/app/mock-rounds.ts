@@ -1,8 +1,8 @@
-import {GameRound,Guess} from './game-play/game-play.component';
+import {GameRound} from './classes/gameRound';
 
 export const mockRounds:GameRound[]=
 [
-  {
+  /*{
     guesses: [
       {
         player: {
@@ -247,5 +247,5 @@ export const mockRounds:GameRound[]=
       ]
     },
     correctAnswerId: "4"
-  }
+  }*/
 ]

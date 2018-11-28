@@ -6,6 +6,7 @@ import { FormArray } from '@angular/forms';
 
 import {Player,Color,Categories,QuestionsGame,Question} from '../classes/questionsGame'
 import {QuestionsService} from '../services/questions.service';
+import { QuestionGameInstanceService } from '../services/question-game-instance.service';
 import {COLORS} from '../mock-colors';
 
 import {Http,Response} from '@angular/http';
@@ -60,6 +61,13 @@ export class QuestionsGameComponent implements OnInit {
     ])
   });
 
+  get playersFormArray() {
+  // Typecast, because: reasons
+  // https://github.com/angular/angular-cli/issues/6099
+  //console.log("players form array",<FormArray>this.setUpForm.get('players'));
+  return <FormArray>this.setUpForm.get('players');
+}
+
   get players() {
     return this.setUpForm.get('players') as FormArray;
   }
@@ -68,11 +76,11 @@ export class QuestionsGameComponent implements OnInit {
     console.log(x);
   }
 
-  getPlayerError(index) {
-    return this.players.controls[0].controls.name.hasError('required') ? 'You must enter a value' :
+  getPlayerError(index) {//todo
+    return "fix this player error"/*this.players.controls[0].controls.name.hasError('required') ? 'You must enter a value' :
         this.players.controls[0].controls.name.errors ? 
         `Length of ${this.players.controls[0].controls.name.errors.maxlength.actualLength} exceeds max of ${this.players.controls[0].controls.name.errors.maxlength.requiredLength}` :
-            '';
+            '';*/
 
   }
 
@@ -87,7 +95,7 @@ export class QuestionsGameComponent implements OnInit {
        }));
   }
 
-  constructor(private fb: FormBuilder,private questionsService: QuestionsService) {
+  constructor(private fb: FormBuilder,private questionsService: QuestionsService,private questionGameInstanceService:QuestionGameInstanceService) {
 
   }
 
@@ -107,8 +115,9 @@ export class QuestionsGameComponent implements OnInit {
     let selectCategories: Categories[] = [this.setUpForm.value.selectedCategories];
     let numberOfQuestions: number = this.setUpForm.value.numberOfQuestions;
     this.questionsService.getQuestionsByCategory(numberOfQuestions, selectCategories).subscribe(questions => {console.log("qqq",questions);
-    this.questionsService.game = new QuestionsGame(players,selectCategories,numberOfQuestions,this.questionsService,questions);
-    /*questionsFromServer = questions*/});
+    this.questionGameInstanceService.game = new QuestionsGame(players,selectCategories,numberOfQuestions,this.questionGameInstanceService,questions);
+    /*questionsFromServer = questions*/
+  console.log("GAME",this.questionGameInstanceService.game)});
     
     
   }
