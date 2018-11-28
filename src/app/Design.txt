@@ -1,0 +1,26 @@
+
+
+
+Player
+  id
+  name
+  color
+  avatarURL
+  score
+
+
+
+GameRound
+  godGuess:Guess
+  guesses:Guess[]
+  question:
+
+  GameRound()
+
+
+Guess
+  Player
+  Answer
+
+
+  SELECT Body__c, (Select id from Answers__r) FROM Question__c

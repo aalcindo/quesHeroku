@@ -1,0 +1,45 @@
+/*
+
+mat-slider {
+  width: 300px;
+}
+
+.player-container{
+
+  display: grid;
+  grid-template-columns: auto;
+  grid-gap: 10px;
+
+}
+.player{
+
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 25px;
+
+}*/
+.player>button{
+  margin-bottom: 21px;
+}
+.alignCenter{
+  text-align: center;
+}
+
+.fill-w{
+  width:100%
+}
+/*
+
+
+.game-options-container{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: center;
+  grid-gap: 25px;
+
+} */
+
+
+
+
+

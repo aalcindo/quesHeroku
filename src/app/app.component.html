@@ -1,0 +1,69 @@
+
+<!-- <mat-accordion>
+  <mat-expansion-panel [expanded]="!questionsService.setupComplete" hideToggle [disabled]="questionsService.setupComplete">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Game Set Up
+      </mat-panel-title>
+      <mat-panel-description>
+        Add players and customize game 
+        <mat-icon>settings</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <game-setup></game-setup>
+    
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="questionsService.setupComplete" [disabled]="!questionsService.setupComplete" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Play Game
+      </mat-panel-title>
+      <mat-panel-description>
+        Everyone takes turns guessing.
+        <mat-icon>play_circle_filled</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <game-play *ngIf="questionsService.setupComplete"></game-play>
+    
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="this.questionsService.isGameOver" [disabled]="!this.questionsService.isGameOver" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Game Results
+      </mat-panel-title>
+      <mat-panel-description>
+        Game winner and scoreboard. 
+        <mat-icon>trending_up</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <game-results *ngIf="this.questionsService.isGameOver"></game-results>
+    
+  </mat-expansion-panel>
+
+</mat-accordion> -->
+
+
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+
+
+<div class="container-fluid">
+<game-setup></game-setup>
+
+<game-play *ngIf="questionsService.game && !questionsService.game.isOver()"></game-play>
+<!-- <game-results ></game-results> -->
+<game-results *ngIf="questionsService.game && questionsService.game.isOver()"></game-results>
+
+<app-messages></app-messages>
+
+
+
+
+
+
+
+  

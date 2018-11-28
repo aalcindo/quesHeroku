@@ -1,0 +1,126 @@
+
+    
+
+<!--  -->
+<div class="row">
+<div class="col" style="background-color:orange">
+
+<form [formGroup]="setUpForm" (ngSubmit)="startGame()">
+  <mat-card>
+    <mat-card-header>
+        <mat-card-title>Players ({{setUpForm.get('players').length}})</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+      
+      <div class="player-container" formArrayName="players">
+        <div>
+        <div *ngFor="let player of setUpForm.get('players').controls; let i=index ">
+              <mat-card>
+              <mat-card-content> 
+              <div class="player" [formGroupName]="i">
+                  <div class="row">
+                  <div class="col-12" style="background-color:gray1">
+                  <mat-form-field appearance="outline" class="fill-w">
+                    <mat-label>P{{i+1}}</mat-label>
+                    <input matInput formControlName="name" placeholder="Player {{i+1}}" [ngStyle]="{'color':player.controls.color.value.value}" required>
+                    <mat-error *ngIf="player.controls.name.invalid">{{getPlayerError(i)}}</mat-error>
+                  </mat-form-field>
+                  </div>
+                  <div class="col-12" style="background-color:teal1">
+                  <mat-form-field appearance="outline" class="fill-w">
+                    <mat-label>Pick a color</mat-label>
+                  
+                    <mat-select (selectionChange)="updateColorUsersCanPick($event)" formControlName="color" placeholder="Select"> 
+                      <mat-option  [value]="player.controls.color.value">
+                        <span [ngStyle]="{'color':player.controls.color.value.value}" >
+                          {{ player.controls.color.value.name }}
+                        </span>
+                      </mat-option>
+
+                      <mat-option *ngFor="let color of colorsUsersCanPick; let i=index" [value]="color">
+                        <span [ngStyle]="{'color':color.value}" >
+                          {{color.name}}
+                        </span>
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  </div>
+                  <div class="col-12" style="background-color:purple1;">
+                  <button mat-raised-button color="warn" type="button" class="fill-w" [disabled]="setUpForm.get('players').length <= 2" (click)="deletePlayer(i)" ><mat-icon>delete</mat-icon></button>
+                  </div>
+                  </div>
+              </div>
+              </mat-card-content>
+              </mat-card>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-12 alignCenter" style="background-color:pink1;">
+          <button mat-fab type="button" [disabled]="MAXNUMOFPLAYERS<=setUpForm.get('players').length" (click)="addPlayer()" >
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+        </div>
+      </div>
+
+
+
+    </mat-card-content>
+    <mat-card-header>
+        <mat-card-title>Game Options</mat-card-title>
+    </mat-card-header>
+      
+    <mat-card-content class="game-options-container">
+        <mat-form-field appearance="outline">
+        <mat-label>Select Categories</mat-label>
+        
+        <mat-select formControlName="selectedCategories" placeholder="Select" multiple> 
+          <mat-option *ngFor="let category of categoryOptions; let i=index" [value]="category">
+
+              {{category}}
+
+          </mat-option>
+        </mat-select>
+        <mat-error >Select a category</mat-error>
+
+      </mat-form-field>
+          <mat-slider
+            class="example-margin"
+            [max]="numOfQuestionSliderOption.max"
+            [min]="numOfQuestionSliderOption.min"
+            [step]="numOfQuestionSliderOption.step"
+            [tickInterval]="numOfQuestionSliderOption.tickInterval"
+            [thumbLabel]="numOfQuestionSliderOption.thumbLabel"
+            formControlName="numberOfQuestions"
+            [vertical]="numOfQuestionSliderOption.vertical">
+        </mat-slider>
+
+      
+      <mat-slide-toggle disabled>Randomize Questions</mat-slide-toggle>
+    </mat-card-content>
+    <mat-card-content>
+      <div class="alignCenter">
+        <button mat-raised-button color="primary" type="submit" >Start Game</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+
+  
+</form>
+
+</div>
+</div>
+
+
+
+
+<!-- <p>
+  Form Value: {{ setUpForm.value | json }}
+  <br>
+</p>
+<p>
+  Form Status: {{ setUpForm.status }}
+</p> -->
+
