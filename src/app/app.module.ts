@@ -18,6 +18,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTableModule} from '@angular/material/table';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 
 
@@ -30,6 +31,9 @@ import { MessagesComponent } from './messages/messages.component';
 import { MessagesService } from './services/messages.service';
 import { GamePlayComponent } from './game-play/game-play.component';
 import { GameResultsComponent } from './game-results/game-results.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatListModule} from '@angular/material/list';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule,ReactiveFormsModule,HttpClientModule,
@@ -43,7 +47,11 @@ import { GameResultsComponent } from './game-results/game-results.component';
     MatCardModule,
     MatSlideToggleModule,
     MatExpansionModule,
-    MatTableModule
+    MatTableModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
+    MatMenuModule
     
     ],
   declarations: [ AppComponent, HelloComponent, QuestionsGameComponent, MessagesComponent, GamePlayComponent, GameResultsComponent ],
@@ -51,3 +59,16 @@ import { GameResultsComponent } from './game-results/game-results.component';
   providers: [QuestionGameInstanceService,QuestionsService, MessagesService]
 })
 export class AppModule { }
+
+
+
+
+
+
+
+
+
+
+
+
+

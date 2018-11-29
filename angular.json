@@ -24,6 +24,7 @@
             ],
             "styles": [
               "src/styles.css",
+              "src/styles-custom.scss",
               "src/bootstrap4-grid.css"
             ],
             "scripts": []
