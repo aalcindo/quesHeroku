@@ -28,9 +28,13 @@ export class QuestionsService {
   getQuestionsByCategory(numOfQuestions:number,categories:Categories[]): Observable<Question[]> {
     
      let headers = new HttpHeaders().set('Authorization', 'Bearer 00D0b000000uQ4B!AQcAQKaUizOHJ.3GwM9xP7u2GXytr6coHlinja_6nm9CA7fzzC.oL5_iIUPzjZlGZxqfkTMEgvwDZso77hPIFKC35tA3quHG');
-    let link = "https://my-json-server.typicode.com/aalcindo/demo/questions";
+    //let link = "https://my-json-server.typicode.com/aalcindo/demo/questions";
     //let link = "questions/6?categories=kids,normal";
-    //return this.http.get(link,{headers}).pipe(map(data => {console.log("aaaaaaaaaaaa",data);return data.map(item=>new Question(item.Id,item.Body1__c,item.Body2__c,Categories.normal/*[item.Category__c.toLocaleLowerCase()]*/))} ))
+    let link = `questions/${numOfQuestions}?categories=${categories.join()}`;
+    //console.log(categories);
+    console.log(link);
+    //let link = "questions/6?categories=kids,normal";
+    return this.http.get(link,{headers}).pipe(map(data => {console.log("aaaaaaaaaaaa",data);return (data as Array<any>).map(item=>new Question(item.Id,item.Body1__c,item.Body2__c,Categories.normal/*[item.Category__c.toLocaleLowerCase()]*/))} ))
     ;
     //.subscribe(questions => {console.log("testing",questions); tempQ=questions});
     // console.log("temp",temp);
