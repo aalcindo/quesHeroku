@@ -1,6 +1,6 @@
 
 <p>
-  <b>{{gameWinnerString}}</b>
+  <b>😎 😎 😎 {{gameWinnerString}}</b> 
   </p>
   
   
@@ -27,16 +27,22 @@
   
     <ng-container matColumnDef="question">
       <th mat-header-cell *matHeaderCellDef> Question </th>
-      <td mat-cell *matCellDef="let element"> {{element.question.body}} Question should be here </td>
+      <td mat-cell *matCellDef="let element"> 
+        <a >
+          Would you rather 
+          
+             <span *ngIf="element.question.answer1==element.opponentGuesses[0].answer;else notSameAsGuess1" [ngClass]="element.question.answer1==element.opponentGuesses[0].answer && element.opponentGuesses[0].answer==element.godGuess.answer ?'correct':'wrong'"><b>{{element.question.answer1}} </b></span>
+            <ng-template #notSameAsGuess1>{{element.question.answer1}}</ng-template>
+          
+          or
+          
+          <span *ngIf="element.question.answer2==element.opponentGuesses[0].answer;else notSameAsGuess2" [ngClass]="element.question.answer2==element.opponentGuesses[0].answer && element.opponentGuesses[0].answer==element.godGuess.answer ?'correct':'wrong'"><b>{{element.question.answer2}}</b></span>
+            <ng-template #notSameAsGuess2>{{element.question.answer2}}</ng-template>
+          
+        </a>
+      </td>
     </ng-container>
   
-    <ng-container matColumnDef="selectedAnswer">
-      <th mat-header-cell *matHeaderCellDef> Guess </th>
-      <td mat-cell *matCellDef="let element" [ngClass]="element.opponentGuesses[0].answer==element.godGuess.answer?'correct':'wrong'" >
-        {{element.opponentGuesses[0].answer}}
-  
-      </td>
-    </ng-container> 
   
   
   

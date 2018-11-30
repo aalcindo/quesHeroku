@@ -17,7 +17,7 @@ export class GameResultsComponent implements OnInit {
 
 
 
-  displayedColumns: string[] = ['god','question','selectedAnswer'];
+  displayedColumns: string[] = ['god','question'/*,'selectedAnswer'*/];
   gameWinnerString = '';
   opponentGuessesFiltered:Guess[];
 
