@@ -135,7 +135,15 @@
     <!-- </mat-card-content> -->
     <!-- <mat-card-content> -->
       <div class="alignCenter">
-        <button mat-raised-button color="primary" type="submit" >Start Game</button>
+        
+          
+        <div *ngIf="!fetchingQuestion;else spinner">
+            <button mat-raised-button color="primary" type="submit" >Start Game</button>
+        </div>
+        
+        <ng-template #spinner>
+            <mat-spinner style="margin:0 auto;" [diameter]="40"></mat-spinner>
+        </ng-template>
       </div>
     <!-- </mat-card-content> -->
   <!-- </mat-card> -->

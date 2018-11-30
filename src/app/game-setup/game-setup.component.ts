@@ -26,6 +26,7 @@ import {Http,Response} from '@angular/http';
 })
 export class QuestionsGameComponent implements OnInit {
 
+  fetchingQuestion:boolean=false;
   categoryOptions: String[];
   avilableColor:Color[]; 
   
@@ -106,6 +107,7 @@ export class QuestionsGameComponent implements OnInit {
 
   
   startGame(){
+    this.questionGameInstanceService.game=null;
     let players:Player[]=this.players.controls.map( /*p => p.value as Player*/
      function(item, index, array){
        return new Player(item.value.id,item.value.name,item.value.color);
@@ -114,10 +116,13 @@ export class QuestionsGameComponent implements OnInit {
     );
     let selectCategories: Categories[] = [this.setUpForm.value.selectedCategories];
     let numberOfQuestions: number = this.setUpForm.value.numberOfQuestions;
+    this.fetchingQuestion=true;
     this.questionsService.getQuestionsByCategory(numberOfQuestions, selectCategories).subscribe(questions => {console.log("qqq",questions);
     this.questionGameInstanceService.game = new QuestionsGame(players,selectCategories,numberOfQuestions,this.questionGameInstanceService,questions);
     /*questionsFromServer = questions*/
-  console.log("GAME",this.questionGameInstanceService.game)});
+  console.log("GAME",this.questionGameInstanceService.game)
+   this.fetchingQuestion=false;
+   });
     
     
   }

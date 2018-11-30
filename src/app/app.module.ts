@@ -38,6 +38,7 @@ import { GameResultsComponent } from './game-results/game-results.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatSidenavModule,
     MatToolbarModule,
     MatListModule,
-    MatMenuModule
+    MatMenuModule,
+    MatProgressSpinnerModule
     
     ],
   declarations: [ AppComponent, HelloComponent, QuestionsGameComponent, MessagesComponent, GamePlayComponent, GameResultsComponent, BodyLogoComponent, BodyContentComponent ],
