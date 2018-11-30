@@ -22,9 +22,13 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 
 
 
+
+
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { QuestionsGameComponent } from './game-setup/game-setup.component';
+import { BodyLogoComponent } from './body-logo/body-logo/body-logo.component';
+import { BodyContentComponent } from './body-content/body-content.component';
 import { QuestionsService } from './services/questions.service';
 import { QuestionGameInstanceService } from './services/question-game-instance.service';
 import { MessagesComponent } from './messages/messages.component';
@@ -34,6 +38,7 @@ import { GameResultsComponent } from './game-results/game-results.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
+
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule,ReactiveFormsModule,HttpClientModule,
@@ -54,7 +59,7 @@ import {MatMenuModule} from '@angular/material/menu';
     MatMenuModule
     
     ],
-  declarations: [ AppComponent, HelloComponent, QuestionsGameComponent, MessagesComponent, GamePlayComponent, GameResultsComponent ],
+  declarations: [ AppComponent, HelloComponent, QuestionsGameComponent, MessagesComponent, GamePlayComponent, GameResultsComponent, BodyLogoComponent, BodyContentComponent ],
   bootstrap:    [ AppComponent ],
   providers: [QuestionGameInstanceService,QuestionsService, MessagesService]
 })

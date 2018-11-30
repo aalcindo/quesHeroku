@@ -6,7 +6,7 @@
 <!-- <div class="container-fluid">
 <game-setup></game-setup>
 
-<game-play *ngIf="questionGameInstanceService.game && !questionGameInstanceService.game.isOver()"></game-play>
+ <game-play *ngIf="questionGameInstanceService.game && !questionGameInstanceService.game.isOver()"></game-play> 
 <game-results *ngIf="questionGameInstanceService.game && questionGameInstanceService.game.isOver()"></game-results>
 
 <app-messages></app-messages> -->
@@ -59,7 +59,7 @@
     </mat-sidenav>
 
     <mat-sidenav-content>
-      <p> main app content</p>
+         <body-content></body-content>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
