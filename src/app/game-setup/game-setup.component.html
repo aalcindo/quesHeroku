@@ -1,8 +1,37 @@
-
+<!-- <div class="row">
+    <div class="col-12" style="background-color:gray1 ;padding-left: 0px;padding-right: 0px;">
+    <mat-form-field appearance="outline" class="fill-w">
+      <mat-label>Pi+1</mat-label>
+      <input matInput required>
+      <mat-error >getPlayerError(i)</mat-error>
+    </mat-form-field>
+    </div>
+    <div class="col-12" style="background-color:teal1">
+    <mat-form-field appearance="outline" class="fill-w">
+      <mat-label>Pick a color</mat-label>
     
-<!--  -->
+      <mat-select placeholder="Select"> 
+        <mat-option  >
+          <span >
+            player.controls.color.value.name 
+          </span>
+        </mat-option>
+
+        <mat-option >
+          <span  >
+            color.name
+          </span>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    </div>
+    <div class="col-12" style="background-color:purple1;">
+    <button mat-raised-button color="warn" type="button" class="fill-w" ><mat-icon>delete</mat-icon></button>
+    </div>
+    </div> -->
+
 <div class="row">
-<div class="col" style="background-color:orange">
+<div class="col" ><!-- style="background-color:orange" -->
 
   <!-- <div class="row">
       <h1 class="mat-display-1">Jackdaws love my big sphinx of quartz.</h1>
@@ -10,29 +39,29 @@
   </div> -->
 
 <form [formGroup]="setUpForm" (ngSubmit)="startGame()">
-  <mat-card>
-    <mat-card-header>
+  <!-- <mat-card> -->
+    <!-- <mat-card-header> -->
       
-        <mat-card-title>Players ({{playersFormArray.length}})</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
+        <!-- <mat-card-title>Players ({{playersFormArray.length}})</mat-card-title> -->
+    <!-- </mat-card-header> -->
+    <!-- <mat-card-content> -->
 
       
       <div class="player-container" formArrayName="players">
         <div>
         <div *ngFor="let player of playersFormArray.controls; let i=index ">
-              <mat-card>
-              <mat-card-content> 
+              <!-- <mat-card> -->
+              <!-- <mat-card-content>  -->
               <div class="player" [formGroupName]="i">
                   <div class="row">
-                  <div class="col-12" style="background-color:gray1">
+                  <div class="col-12 fix-col-pushed-right" style="background-color:gray1;">
                   <mat-form-field appearance="outline" class="fill-w">
                     <mat-label>P{{i+1}}</mat-label>
                     <input matInput formControlName="name" placeholder="Player {{i+1}}" [ngStyle]="{'color':player.controls.color.value.value}" required>
                     <mat-error *ngIf="player.controls.name.invalid">{{getPlayerError(i)}}</mat-error>
                   </mat-form-field>
                   </div>
-                  <div class="col-12" style="background-color:teal1">
+                  <div class="col-12 fix-col-pushed-right" style="background-color:teal1">
                   <mat-form-field appearance="outline" class="fill-w">
                     <mat-label>Pick a color</mat-label>
                   
@@ -51,17 +80,17 @@
                     </mat-select>
                   </mat-form-field>
                   </div>
-                  <div class="col-12" style="background-color:purple1;">
+                  <div class="col-12 fix-col-pushed-right" style="background-color:purple1;">
                   <button mat-raised-button color="warn" type="button" class="fill-w" [disabled]="setUpForm.get('players').length <= 2" (click)="deletePlayer(i)" ><mat-icon>delete</mat-icon></button>
                   </div>
                   </div>
               </div>
-              </mat-card-content>
-              </mat-card>
+              <!-- </mat-card-content> -->
+              <!-- </mat-card> -->
         </div>
         </div>
         <div class="row">
-        <div class="col-12 alignCenter" style="background-color:pink1;">
+        <div class="col-12 alignCenter fix-col-pushed-right" style="background-color:pink1;">
           <button mat-fab type="button" [disabled]="settings.MAXNUMOFPLAYERS<=playersFormArray.length" (click)="addPlayer()" >
             <mat-icon>add</mat-icon>
           </button>
@@ -71,12 +100,12 @@
 
 
 
-    </mat-card-content>
-    <mat-card-header>
+    <!-- </mat-card-content> -->
+    <!-- <mat-card-header> -->
         <mat-card-title>Game Options</mat-card-title>
-    </mat-card-header>
+    <!-- </mat-card-header> -->
       
-    <mat-card-content class="game-options-container">
+    <!-- <mat-card-content class="game-options-container"> -->
         <mat-form-field appearance="outline">
         <mat-label>Select Categories</mat-label>
         
@@ -103,13 +132,13 @@
 
       
       <mat-slide-toggle disabled>Randomize Questions</mat-slide-toggle>
-    </mat-card-content>
-    <mat-card-content>
+    <!-- </mat-card-content> -->
+    <!-- <mat-card-content> -->
       <div class="alignCenter">
         <button mat-raised-button color="primary" type="submit" >Start Game</button>
       </div>
-    </mat-card-content>
-  </mat-card>
+    <!-- </mat-card-content> -->
+  <!-- </mat-card> -->
 
 
   

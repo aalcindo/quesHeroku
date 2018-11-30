@@ -26,7 +26,17 @@ mat-slider {
 }
 
 .fill-w{
-  width:100%
+  /* width:100% */
+  width:-webkit-fill-available
+}
+
+.fix-col-pushed-right{
+  /* padding-left: 0px;padding-right: 0px; */
+  flex: auto;
+}
+
+.row{
+  padding-bottom: 15px;
 }
 /*
 

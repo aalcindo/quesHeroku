@@ -51,7 +51,7 @@ export class GameResultsComponent implements OnInit {
       replacement = ' and'
       this.gameWinnerString = this.gameWinnerString.replace(/,([^,]*)$/,replacement+'$1');
     }
-    this.gameWinnerString+=`won the game with ${winners[0].score} points.`;
+    this.gameWinnerString+=`won the game with ${winners[0].score} point(s).`;
     //console.log("Winner",this.gameWinnerString);
 
   }

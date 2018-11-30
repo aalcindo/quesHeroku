@@ -1,8 +1,16 @@
+getting one question returns an empty array
+ex:questions/1?categories=kids,normal
+
+
+
+
+
+
 <body-logo></body-logo>
 
-<!-- <game-setup></game-setup> -->
-<mat-accordion>
-    <mat-expansion-panel [expanded]="true" hideToggle [disabled]="!true">
+
+<mat-accordion (multi)="false">
+    <mat-expansion-panel [expanded]="true" hideToggle [disabled]="false">
       <mat-expansion-panel-header>
         <mat-panel-title>
           Game Set Up
@@ -12,9 +20,9 @@
           <mat-icon>settings</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>
-
+  
       <game-setup></game-setup>
-
+      
     </mat-expansion-panel>
   
     <mat-expansion-panel [expanded]="questionGameInstanceService.game && !questionGameInstanceService.game.isOver()" [disabled]="!questionGameInstanceService.game || questionGameInstanceService.game.isOver()" hideToggle>
@@ -28,12 +36,12 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
   
-      
       <game-play *ngIf="questionGameInstanceService.game && !questionGameInstanceService.game.isOver()"></game-play> 
+      
       
     </mat-expansion-panel>
   
-    <mat-expansion-panel [expanded]="questionGameInstanceService.game && questionGameInstanceService.game.isOver()" [disabled]="!questionGameInstanceService.game || !questionGameInstanceService.game.isOver()" hideToggle>
+    <mat-expansion-panel [expanded]="questionGameInstanceService.game && questionGameInstanceService.game.isOver()" [disabled]="!questionGameInstanceService.game || (questionGameInstanceService.game && !questionGameInstanceService.game.isOver())" hideToggle>
       <mat-expansion-panel-header>
         <mat-panel-title>
           Game Results
@@ -45,6 +53,7 @@
       </mat-expansion-panel-header>
   
       <game-results *ngIf="questionGameInstanceService.game && questionGameInstanceService.game.isOver()"></game-results>
+
       
     </mat-expansion-panel>
   
