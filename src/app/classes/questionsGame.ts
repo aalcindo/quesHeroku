@@ -14,15 +14,20 @@ export class QuestionsGame {
   nextQuestionIndex: number;
 
 
-  constructor(players: Player[], categories: Categories[], numOfQuestions: number, private questionGameInstanceService: QuestionGameInstanceService,questions: Question[]) {
+  constructor(players: Player[], categories: Categories[], numOfQuestions: number, private questionGameInstanceService: QuestionGameInstanceService,questions: Question[], shuffle:boolean) {
     this.players = players;
     let questionsFromServer: Question[];
     //questionsService.getQuestionsByCategory(numOfQuestions, categories).subscribe(questions => {console.log("qqq",questions);questionsFromServer = questions});
     questionsFromServer = questions;//////////////////////i just did this
     this.initQuestionForAllPlayers(questionsFromServer);
+    if(shuffle){
+      this.questions=this.shuffle(this.questions);
+    }
+    
     this.gameRounds = [];
     this.nextQuestionIndex = 0;
     this.addGameRound();
+    //this.gameRounds=this.shuffle(this.gameRounds);
     this.numberOfRoundsPerGame = players.length * numOfQuestions;
     this.totNumOfPlayers = players.length;
     
@@ -34,6 +39,27 @@ export class QuestionsGame {
       for (let i = 0; i < this.players.length; i++)
         this.questions.push(q);
     }
+    
+    
+  }
+
+  private shuffle(array) {
+    var currentIndex = array.length; 
+    var temporaryValue;
+    var randomIndex;
+  
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+  
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+
+    }
+    return array;
   }
 
   playTurn(answer:string){

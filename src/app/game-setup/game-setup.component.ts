@@ -34,7 +34,8 @@ export class QuestionsGameComponent implements OnInit {
     MAXNUMOFPLAYERS:4,
     MAXNUMBEROFQUESTIONS:5,
     MIMNUMBEROFQUESTIONS:1,
-    DEFAULTNUMBEROFQUESTIONS:1
+    DEFAULTNUMBEROFQUESTIONS:1,
+    DEFAULTSHUFFLEQUESTION:true
   }
 
   
@@ -59,7 +60,9 @@ export class QuestionsGameComponent implements OnInit {
     selectedCategories:[[Categories.normal],[Validators.required]],
     numberOfQuestions:[this.settings.DEFAULTNUMBEROFQUESTIONS],
     players: this.fb.array([
-    ])
+    ]),
+    shuffleQUestions:[this.settings.DEFAULTSHUFFLEQUESTION]
+
   });
 
   get playersFormArray() {
@@ -71,6 +74,10 @@ export class QuestionsGameComponent implements OnInit {
 
   get players() {
     return this.setUpForm.get('players') as FormArray;
+  }
+
+  get shuffleQuestions(){
+    return this.setUpForm.get('shuffleQUestions').value
   }
 
   log = (x)=>{
@@ -118,7 +125,7 @@ export class QuestionsGameComponent implements OnInit {
     let numberOfQuestions: number = this.setUpForm.value.numberOfQuestions;
     this.fetchingQuestion=true;
     this.questionsService.getQuestionsByCategory(numberOfQuestions, selectCategories).subscribe(questions => {console.log("qqq",questions);
-    this.questionGameInstanceService.game = new QuestionsGame(players,selectCategories,numberOfQuestions,this.questionGameInstanceService,questions);
+    this.questionGameInstanceService.game = new QuestionsGame(players,selectCategories,numberOfQuestions,this.questionGameInstanceService,questions,this.shuffleQuestions);
     /*questionsFromServer = questions*/
   console.log("GAME",this.questionGameInstanceService.game)
    this.fetchingQuestion=false;
@@ -126,6 +133,8 @@ export class QuestionsGameComponent implements OnInit {
     
     
   }
+
+
 
   updateColorUsersCanPick(){
     let selectedColors:Color[] = (this.players.controls.map(control=>control.get('color').value as Color));

@@ -2,59 +2,7 @@ getting one question returns an empty array
 ex:questions/1?categories=kids,normal
 
 
+when game end 0 0, it says both person are the winners
 
+make name desapear when a person clicks on it. 
 
-
-
-<body-logo></body-logo>
-
-
-<mat-accordion (multi)="false">
-    <mat-expansion-panel [expanded]="true" hideToggle [disabled]="false">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Game Set Up
-        </mat-panel-title>
-        <mat-panel-description>
-          Add players and customize game 
-          <mat-icon>settings</mat-icon>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-  
-      <game-setup></game-setup>
-      
-    </mat-expansion-panel>
-  
-    <mat-expansion-panel [expanded]="questionGameInstanceService.game && !questionGameInstanceService.game.isOver()" [disabled]="!questionGameInstanceService.game || questionGameInstanceService.game.isOver()" hideToggle>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Play Game
-        </mat-panel-title>
-        <mat-panel-description>
-          Everyone takes turns guessing.
-          <mat-icon>play_circle_filled</mat-icon>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-  
-      <game-play *ngIf="questionGameInstanceService.game && !questionGameInstanceService.game.isOver()"></game-play> 
-      
-      
-    </mat-expansion-panel>
-  
-    <mat-expansion-panel [expanded]="questionGameInstanceService.game && questionGameInstanceService.game.isOver()" [disabled]="!questionGameInstanceService.game || (questionGameInstanceService.game && !questionGameInstanceService.game.isOver())" hideToggle>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Game Results
-        </mat-panel-title>
-        <mat-panel-description>
-          Game winner and scoreboard. 
-          <mat-icon>trending_up</mat-icon>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-  
-      <game-results *ngIf="questionGameInstanceService.game && questionGameInstanceService.game.isOver()"></game-results>
-
-      
-    </mat-expansion-panel>
-  
-  </mat-accordion>
