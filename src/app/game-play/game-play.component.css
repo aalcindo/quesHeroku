@@ -7,3 +7,13 @@
 .godCardSubtitle{
   color:#00c853
 }
+
+.godCard{
+  background-image: url(https://vectr.com/aalcindo/d7qbg0Ugz.svg?width=473&height=354&select=d7qbg0Ugzpage0);
+    background-size: contain;
+}
+
+.guessingCard{
+  background-image: url(https://vectr.com/aalcindo/cUJQFj7HU.svg?width=550&height=400&select=cUJQFj7HUpage0);
+    background-size: contain;
+}
